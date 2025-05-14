@@ -3,6 +3,7 @@
         <h1>LogOut</h1>
 
         <div class="settings">
+            <i class="bi bi-bell" routerLink="/notificacoes"></i>
 
             <div class="profile">
                 <i class="bi bi-person-circle"></i>
@@ -15,19 +16,7 @@
         </div>
     </header>
 
-    <div class="logout-container">
-        <div class="logout-card">
-            <div class="logout-icon">
-                <i class="bi bi-box-arrow-right"></i>
-            </div>
-            
-            <h2>Deseja sair do sistema?</h2>
-            <p>Essa ação encerrará sua sessão atual, mas você poderá fazer o login novamente quando desejar.</p>
-            
-            <div class="logout-actions">
-                <button class="btn-cancel" routerLink="/admin">Cancelar</button>
-                <button class="btn-confirm" (click)="logout()">Sair</button>
-            </div>
-        </div>
+    <div class="logout">
+        
     </div>
 </app-admin-layout>

@@ -1,92 +1,72 @@
-:root {
-    --laranja: #ff6b00;
-    --cinza: #f5f5f5;
-    --branco: #ffffff;
-    --base-size: 1rem; /* Unidade base que reduzirá com a tela */
-}
-
 .nav {
     background-color: var(--cinza);
-    padding: 0 clamp(0.5rem, 3vw, 1.5rem);
-    height: clamp(3rem, 12vh, 4.5rem);
+
     display: flex;
+    justify-content: center;
     align-items: center;
-    overflow: hidden; /* Garante que nada vaze */
+    gap: 2rem;
+
+    height: 12vh;
 }
 
-.nav-content {
+.navegacao {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: clamp(0.5rem, 2vw, 1.5rem);
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+
+    gap: 1rem;
 }
 
-/* Container principal da logo (imagem + texto) */
-.logo {
+ul {
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+
+.input {
+    width: 50%;
+
     display: flex;
-    align-items: flex-start; /* Alinha verticalmente */
-    gap: 0.5rem; /* Espaço entre imagem e texto */
-    cursor: pointer;
-    height: 100%; /* Ocupa toda altura da header */
-    padding: 0.5rem 0; /* Espaçamento interno */
 }
 
-/* Estilo para a IMAGEM da logo */
-.logo img {
-    height: clamp(0.9rem, 2vw, 1.5rem); /* Reduzido de 25px/5vh/50px */
-    width: auto;
-    object-fit: contain;
-    transition: all 0.3s ease;
+.input input, .input button {
+    background-color: var(--branco);
+    height: 2.2rem;
 }
 
-/* Texto com tamanho mínimo ajustado */
-.logo h1 {
-    font-size: clamp(0.9rem, 2vw, 1.5rem); /* Reduzido de 0.9rem/2vw/1.5rem */
-    color: var(--laranja);
-    margin: 0;
-    white-space: nowrap;
-    line-height: 1;
-}
+.input input {
+    padding: .2rem .6rem;
+    width: 90%;
 
-
-/* Grupo de Pesquisa - Redução inteligente */
-.search-group {
-    display: flex;
-    flex: 1;
-    min-width: 0; /* Permite que encolha abaixo do conteúdo */
-}
-
-.search-group input {
-    flex: 1;
-    padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
-    font-size: clamp(0.6rem, 2vw, 0.9rem);
+    font-size: .8rem;
+    
     border: none;
     border-radius: 100px 0 0 100px;
-    min-width: 3rem;
+    border-right: none;
 }
 
-.search-group button {
-    width: clamp(1.5rem, 5vw, 2.5rem);
-    font-size: clamp(0.8rem, 2.5vw, 1.2rem);
-    background: var(--branco);
+.input button {
+    width: 7%;
+
     color: var(--laranja);
-    border: none;
+    font-size: 1.2rem;
+    
     border-radius: 0 100px 100px 0;
+    border-left: none;
 }
 
-/* Ícones - Redução proporcional */
-.icon-group {
-    display: flex;
-    gap: clamp(0.3rem, 1.5vw, 1rem);
-}
+.navegacao button {
+    padding: 0 .2rem;
+    height: 3rem;
 
-.icon-group button {
-    font-size: clamp(1rem, 4vw, 1.8rem);
+    font-size: 2rem;
     color: var(--laranja);
+
     background: none;
-    border: none;
-    padding: 0.2rem;
-    min-width: 1.5rem;
+
+    transition: .5s;
+}
+
+.navegacao button:hover {
+    color: var(--laranja-claro);
 }

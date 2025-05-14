@@ -1,114 +1,32 @@
-
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #f8f9fa;
-    border: solid #f8f9fa ;
-    border-radius: 25px;
+    justify-content: space-between;
+
 }
 
+.settings {
+    display: flex;
+    gap: 1rem;
+}
+
+i {
+    font-size: 2rem;
+
+    transition: .5s;
+}
 
 .profile {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.bi-person-circle {
-    font-size: 2rem;
-    color: #6c757d;
-}
-
-.profile .text {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.profile .text p:first-child {
-    font-weight: 600;
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-.profile .text p:last-child {
-    margin: 0;
-    font-size: 0.8rem;
-    color: #6c757d;
-}
-
-.logout-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 120px);
-    padding: 2rem;
-}
-
-
-.logout-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 2.5rem;
-    max-width: 450px;
-    width: 100%;
-    text-align: center;
-}
-
-
-.logout-icon {
-    font-size: 3.5rem;
-    color: var(--lilas);
-    margin-bottom: 1.5rem;
-}
-
-.logout-card h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 0.8rem;
-    font-weight: 600;
-}
-
-.logout-card p {
-    color: #666;
-    margin-bottom: 2rem;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.logout-actions {
-    display: flex;
     gap: 1rem;
-    justify-content: center;
+
+    transition: .5s;
 }
 
-.btn-cancel, .btn-confirm {
-    padding: 0.8rem 1.8rem;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    font-size: 1rem;
+.bi:hover, .profile:hover {
+    color: var(--laranja);
 }
 
-.btn-cancel {
-    background-color: #f1f2f6;
-    color: #333;
-}
-
-.btn-cancel:hover {
-    background-color: #dfe4ea;
-}
-
-.btn-confirm {
-    background-color: var(--lilas);
-    color: white;
-}
-
-.btn-confirm:hover {
-    background-color: var(--laranja);
+.text p {
+    margin-bottom: 0;
 }

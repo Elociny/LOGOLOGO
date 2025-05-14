@@ -79,6 +79,7 @@ i {
 
 .cabecalho-tabela h2 {
     font-size: 2rem;
+
     margin-bottom: 0;
 }
 
@@ -87,7 +88,6 @@ i {
     gap: 3rem;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .mostrar {
@@ -119,18 +119,21 @@ i {
 }
 
 .controller button {
-    background-color: var(--lilas);
+    background-color: var(--laranja);
 
     display: flex;
     align-items: center;
     gap: .5rem;
     padding: 0 1rem;
+
     border-radius: .5rem;
+
     transition: .5s;
 }
 
 .controller button:hover {
-    background-color: var(--laranja);
+    background-color: var(--cinza);
+
     color: var(--branco);
 }
 
