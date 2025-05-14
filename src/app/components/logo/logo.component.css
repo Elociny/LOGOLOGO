@@ -1,9 +1,10 @@
 .logo {
- 
-    height: 50px; 
-    width: auto; 
-    transition: all 0.3s ease;
-    
-    max-height: 100%;
-    object-fit: contain;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: .5rem;
+
+    color: var(--laranja);
+
+    cursor: pointer;
 }

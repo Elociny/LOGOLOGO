@@ -24,13 +24,6 @@ thead {
     background-color: var(--cinza);
 }
 
-th.ident {
-    border-top-left-radius: 15px;
-}
-
-th.qfinal{
-    border-top-right-radius: 15px;
-}
 thead th {
     border-bottom: 1px solid var(--cinza);
     padding: 8px;

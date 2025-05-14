@@ -1,18 +1,14 @@
 <nav class="nav">
-    <div class="nav-content">
-        <div routerLink="/" class="logo">
-            <img src="assets/images/LOGOLOGO.svg" alt="Logo">
-            <h1>LOGOLOGO</h1>
-        </div>
-        
-        <div class="search-group">
-            <input type="text" placeholder="Procurar...">
-            <button class="bi bi-search"></button>
-        </div>
-        
-        <div class="icon-group">
-            <button class="bi bi-cart2" routerLink="/carrinho"></button>
-            <button class="bi bi-person-circle" routerLink="/login"></button>
-        </div>
+    <app-logo title="LOGOLOGO"></app-logo>
+
+    <div class="input">
+        <input type="text" name="input-search" id="input-search" placeholder="Procurar...">
+        <button class="bi bi-search">
+        </button>
     </div>
+
+    <ul class="navegacao">
+        <li routerLink="/carrinho"><button class="bi bi-cart2"></button></li>
+        <li routerLink="/login"><button class="bi bi-person-circle"></button></li>
+    </ul>
 </nav>

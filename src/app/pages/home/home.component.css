@@ -1,19 +1,9 @@
-/* CONTAINER PRINCIPAL - LINHA DE BOTÕES */
 .row-btns {
-    padding: 15px 0;
+    padding: 1rem 0;
     display: flex;
     justify-content: center;
-    gap: 10px; /* Espaço fixo entre os botões */
-    width: 100%;
-    flex-wrap: nowrap; /* Garante que fiquem em uma única linha */
     align-items: center;
-}
-
-/* BOTÕES (app-black-square-button) - AJUSTE ESSENCIAL */
-.row-btns app-black-square-button {
-    flex: 1; /* Ocupa espaço igualitário */
-    min-width: 0; /* 🔥 Permite que o conteúdo interno encolha */
-    display: flex; /* Ou flex, dependendo da implementação do componente */
+    gap: 8rem;
 }
 
 .novidades {
