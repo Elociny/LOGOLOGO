@@ -1,28 +1,42 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-password-input-layout',
-  imports: [CommonModule],
   templateUrl: './password-input-layout.component.html',
-  styleUrls: ['./password-input-layout.component.css']
+  styleUrls: ['./password-input-layout.component.css'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => PasswordInputLayoutComponent),
+    multi: true
+  }]
 })
-export class PasswordInputLayoutComponent {
+export class PasswordInputLayoutComponent implements ControlValueAccessor {
   @Input() tema: string = "";
   @Input() label: string = "";
   @Input() placeholder: string = "";
-  @Input() password: string = "";
+   @Input() password: string = ""; 
+  
+  value: string = "";
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
-  @Output() passwordChange = new EventEmitter<string>();
-
-  mostrarSenha: boolean = false;
-
-  onInput(event: any) {
-    this.password = event.target.value;
-    this.passwordChange.emit(this.password);
+  writeValue(value: string): void {
+    this.value = value;
   }
 
-  toggleMostrarSenha() {
-    this.mostrarSenha = !this.mostrarSenha;
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  updateValue(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.value = value;
+    this.onChange(value);
+    this.onTouched();
   }
 }

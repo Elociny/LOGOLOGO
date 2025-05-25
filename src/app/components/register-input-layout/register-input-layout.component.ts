@@ -1,23 +1,45 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-register-input-layout',
-  imports: [],
   templateUrl: './register-input-layout.component.html',
-  styleUrl: './register-input-layout.component.css'
+  styleUrls: ['./register-input-layout.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RegisterInputLayoutComponent),
+      multi: true
+    }
+  ]
 })
-export class RegisterInputLayoutComponent {
-  @Input() tema: string = ""
-  @Input() label: string = ""
-  @Input() placeholder: string = ""
-  @Input() type: string = ""
+export class RegisterInputLayoutComponent implements ControlValueAccessor {
+  @Input() tema: string = "";
+  @Input() label: string = "";
+  @Input() email: string = "";
+  @Input() placeholder: string = "";
+  @Input() value: string = ""
 
-  @Input() value: string = '';
-  @Output() valueChange = new EventEmitter<string>();
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
-  onInput(event: any) {
-    this.value = event.target.value;
-    this.valueChange.emit(this.value);
+  writeValue(value: string): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+
+  updateValue(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.value = value;
+    this.onChange(value);
+    this.onTouched();
   }
 }
-

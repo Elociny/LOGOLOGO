@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PasswordInputLayoutComponent } from './password-input-layout.component';
 
 describe('PasswordInputLayoutComponent', () => {

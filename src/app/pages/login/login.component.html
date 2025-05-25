@@ -3,21 +3,38 @@
         <div class="center">
             <h2>Bem vindo de volta!</h2>
             <p>Por favor, insira as informações abaixo</p>
+<div *ngIf="credenciaisInvalidas" class="mensagem-erro">
+    Credenciais inválidas! Por favor, tente novamente.
+</div>
+        
+    <app-register-input-layout
+        tema="tema-claro"
+        label="e-mail"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Digite seu e-mail">
+    </app-register-input-layout>
 
-            <app-register-input-layout tema="tema-claro" label="e-mail" placeholder="Digite seu e-mail" type="email"
-                [(value)]="email">
-            </app-register-input-layout>
-
-            <app-password-input-layout tema="tema-claro" label="senha" placeholder="Digite sua senha"
-                [(password)]="senha">
-            </app-password-input-layout>
-
+    <app-password-input-layout
+        tema="tema-claro"
+        label="senha"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Digite sua senha">
+    </app-password-input-layout>
 
             <div class="btns">
-                <app-orange-square-button (click)="fazerLogin()" tema="tema-claro" orangeSquareButton="entrar">
+                <app-orange-square-button 
+                    tema="tema-claro" 
+                    orangeSquareButton="entrar"
+                    (click)="login()">
                 </app-orange-square-button>
-                <app-orange-square-button routerLink="/" tema="tema-claro"
-                    orangeSquareButton="Voltar"></app-orange-square-button>
+                
+                <app-orange-square-button 
+                    routerLink="/" 
+                    tema="tema-claro" 
+                    orangeSquareButton="Voltar">
+                </app-orange-square-button>
             </div>
 
             <div class="btns">
@@ -31,12 +48,9 @@
 
             <p class="cadastrar">Não possui uma conta? <span routerLink="/cadastrar">Cadastrar</span></p>
         </div>
-
     </div>
 
     <div class="right">
-        <div class="blur">
-            <app-logo routerLink="/" title="logologo"></app-logo>
-        </div>
+        <div class="blur"></div>
     </div>
 </main>

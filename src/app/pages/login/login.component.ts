@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { RouterModule } from '@angular/router';
 import { RegisterInputLayoutComponent } from "../../components/register-input-layout/register-input-layout.component";
 import { PasswordInputLayoutComponent } from "../../components/password-input-layout/password-input-layout.component";
 import { OrangeSquareButtonComponent } from "../../components/buttons/orange-square-button/orange-square-button.component";
@@ -13,38 +12,29 @@ import { LogoComponent } from "../../components/logo/logo.component";
   selector: 'app-login',
   standalone: true,
   imports: [
-    RouterModule,
+    CommonModule,
     FormsModule,
+    RouterModule,
     RegisterInputLayoutComponent,
     PasswordInputLayoutComponent,
-    OrangeSquareButtonComponent,
-    LogoComponent
+    OrangeSquareButtonComponent
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   email: string = '';
-  senha: string = '';
+  password: string = '';
+  credenciaisInvalidas: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private router: Router) {}
 
-  fazerLogin() {
-    if (!this.email || !this.senha) {
-      alert('Preencha os campos!');
-      return;
+  login() {
+    if (this.email.trim() === 'admin@gmail.com' && this.password.trim() === '1234') {
+      this.router.navigate(['/admin']);
+    } else {
+      this.credenciaisInvalidas = true;
+      setTimeout(() => this.credenciaisInvalidas = false, 3000);
     }
-
-    this.authService.login(this.email, this.senha)
-      .then((res: any) => {
-        if (res.tipo === 'admin') {
-          this.router.navigate(['/admin']);
-        } else if (res.tipo === 'client') {
-          this.router.navigate(['/']);
-        }
-      })
-      .catch(() => {
-        alert('Usuário ou senha incorretos!');
-      });
   }
 }
