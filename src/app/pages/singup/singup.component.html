@@ -58,3 +58,25 @@
     </app-button-action>
   </div>
 </app-confirm-action>
+
+<app-confirm-action fundo="fundo-escuro" [isOpen]="modalCadastroUsuario" (closed)="fecharModalCadastroUsuario()"
+  title="Usuário cadastrado">
+  <p>Usuário cadastrado com sucesso!</p>
+
+  <div class="espaco">
+    <app-button-action cor="lilas" (click)="fecharModalCadastroUsuario()">
+      Fechar
+    </app-button-action>
+  </div>
+</app-confirm-action>
+
+<app-confirm-action fundo="fundo-escuro" [isOpen]="modalErroCadastroUsuario" (closed)="fecharModalErroCadastroUsuario()"
+  title="erro no cadastrado">
+  <p>Erro ao cadastrar. Tente novamente.</p>
+
+  <div class="espaco">
+    <app-button-action cor="vermelho" (click)="fecharModalErroCadastroUsuario()">
+      Fechar
+    </app-button-action>
+  </div>
+</app-confirm-action>

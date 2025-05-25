@@ -20,8 +20,10 @@ export class SingupComponent {
   senha: string = '';
   confirmarSenha: string = '';
 
-  modalErroLogin = false;
+  modalErroLogin = false
   modalErroSenha = false
+  modalCadastroUsuario = false
+  modalErroCadastroUsuario = false
 
   abrirModalErroLogin() {
     this.modalErroLogin = true
@@ -37,6 +39,23 @@ export class SingupComponent {
 
   fecharModalSenha() {
     this.modalErroSenha = false
+  }
+
+  abrirModalCadastroUsuario() {
+    this.modalCadastroUsuario = true
+  }
+
+  fecharModalCadastroUsuario() {
+    this.modalCadastroUsuario = false
+    this.router.navigate(['/']);
+  }
+
+  abrirModalErroCadastroUsuario() {
+    this.modalErroCadastroUsuario = true
+  }
+
+  fecharModalErroCadastroUsuario() {
+    this.modalErroCadastroUsuario = false
   }
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -60,12 +79,11 @@ export class SingupComponent {
 
     this.http.post('http://localhost:3000/clients', novoUsuario).subscribe(
       () => {
-        alert('Usuário cadastrado com sucesso!');
-        this.router.navigate(['/login']);
+        this.abrirModalCadastroUsuario();
       },
       (error) => {
+        this.abrirModalErroCadastroUsuario()
         console.error(error);
-        alert('Erro ao cadastrar. Tente novamente.');
       }
     );
   }
