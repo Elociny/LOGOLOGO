@@ -35,7 +35,7 @@
 
 <app-confirm-action fundo="fundo-escuro" [isOpen]="modalConfirmarCadastro" (closed)="fecharModalConfirmarCadastro()"
   title="Produto cadastrado">
-  <p>Produto cadastrado com sucesso!</p>
+  <p>Produto <span>{{ produto.nome }}</span> cadastrado com sucesso!</p>
 
   <div class="espaco">
     <app-button-action cor="lilas" (click)="fecharModalConfirmarCadastro(); fecharModalCadastrarProduto()">

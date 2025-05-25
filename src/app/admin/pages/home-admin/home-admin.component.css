@@ -139,5 +139,7 @@ i {
     gap: 1rem;
 }
 
-
+app-confirm-action p span {
+    font-weight: bold;
+}
 
