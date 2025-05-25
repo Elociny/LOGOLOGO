@@ -62,28 +62,41 @@ export class SingupComponent {
 
   cadastrar() {
     if (!this.nome || !this.email || !this.senha || !this.confirmarSenha) {
-      this.abrirModalErroLogin()
+      this.abrirModalErroLogin();
       return;
     }
 
     if (this.senha !== this.confirmarSenha) {
-      this.abrirModalErroSenha()
+      this.abrirModalErroSenha();
       return;
     }
 
-    const novoUsuario = {
-      nome: this.nome,
-      email: this.email,
-      senha: this.senha
-    };
+    this.http.get<any[]>(`http://localhost:3000/clients?email=${this.email}`).subscribe(
+      (usuariosExistentes) => {
+        if (usuariosExistentes.length > 0) {
+          this.abrirModalErroCadastroUsuario();
+          return;
+        }
 
-    this.http.post('http://localhost:3000/clients', novoUsuario).subscribe(
-      () => {
-        this.abrirModalCadastroUsuario();
+        const novoUsuario = {
+          nome: this.nome,
+          email: this.email,
+          senha: this.senha
+        };
+
+        this.http.post('http://localhost:3000/clients', novoUsuario).subscribe(
+          () => {
+            this.abrirModalCadastroUsuario();
+          },
+          (error) => {
+            console.error('Erro ao cadastrar:', error);
+            this.abrirModalErroCadastroUsuario();
+          }
+        );
       },
       (error) => {
-        this.abrirModalErroCadastroUsuario()
-        console.error(error);
+        console.error('Erro ao verificar e-mail existente:', error);
+        this.abrirModalErroCadastroUsuario();
       }
     );
   }
