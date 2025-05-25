@@ -61,7 +61,7 @@
 
 <app-confirm-action fundo="fundo-escuro" [isOpen]="modalCadastroUsuario" (closed)="fecharModalCadastroUsuario()"
   title="Usuário cadastrado">
-  <p>Usuário cadastrado com sucesso!</p>
+  <p>Usuário <span>{{ nome }}</span> cadastrado com sucesso!</p>
 
   <div class="espaco">
     <app-button-action cor="lilas" (click)="fecharModalCadastroUsuario()">
@@ -72,7 +72,7 @@
 
 <app-confirm-action fundo="fundo-escuro" [isOpen]="modalErroCadastroUsuario" (closed)="fecharModalErroCadastroUsuario()"
   title="erro ao cadastrar">
-  <p>Este e-mail já esta sendo usado, tente outro!</p>
+  <p>O e-mail <span>{{ email }}</span> já esta sendo usado. <br> Tente outro!</p>
 
   <div class="espaco">
     <app-button-action cor="vermelho" (click)="fecharModalErroCadastroUsuario()">

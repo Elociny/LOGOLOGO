@@ -67,3 +67,8 @@ span {
 
     backdrop-filter: blur(2px);
 }
+
+app-confirm-action p span {
+    color: var(--cinza);
+    font-weight: bold;
+}
