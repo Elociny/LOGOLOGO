@@ -75,20 +75,33 @@ export const routes: Routes = [
         component: UnderConstructionsComponent,
         title: "LOGOLOGO - Em contrução"
     },
-    
-         { path: 'admin', component: AdminComponent },
-  {path: 'admin/home-admin', 
-    component: HomeAdminComponent},
-    
     {
-        path: "notificacoes",
-        component: NotificationAdminComponent,
-        title: "LOGOLOGO - Notificações"
-    },
-    {
-        path: "logout",
-        component: LogOutAdminComponent,
-        title: "LOGOLOGO - Log Out"
+        path: "admin",
+        component: AdminComponent,
+        title: "LOGOLOGO - Admin",
+        canActivate: [AdminGuard],
+        children: [
+            {
+                path: "",
+                component: HomeAdminComponent,
+                title: "LOGOLOGO - Admin Home"
+            },
+            {
+                path: "notificacoes",
+                component: NotificationAdminComponent,
+                title: "LOGOLOGO - Notificações"
+            },
+            {
+                path: "logout",
+                component: LogOutAdminComponent,
+                title: "LOGOLOGO - Log Out"
+            },
+            {
+                path: "users",
+                component: UsersAdminComponent,
+                title: "LOGOLOGO - Usuários"
+            }
+        ]
     },
     {
         path: "404",

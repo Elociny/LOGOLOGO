@@ -1,20 +1,24 @@
 .login-container {
     width: 100vw;
     height: 100vh;
+    
     display: flex;
 }
 
 .left {
     width: 50%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     color: var(--cinza);
 }
 
 .center {
     width: 80%;
+
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -41,40 +45,32 @@ h2, .cadastrar {
 
 input[type=checkbox] {
     accent-color: var(--laranja);
+
     width: 1.3rem;
     height: 1.3rem;
 }
 
 span {
     color: var(--laranja);
+
     cursor: pointer;
 }
 
 .right {
     width: 50%;
+
     background-image: url("/assets/images/background-light.svg");
     background-position: 50% 50%; 
     background-size: 110%;
 }
 
 .blur {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 100%;
     height: 100%;
+
     backdrop-filter: blur(2px);
-}
-
-.mensagem-erro {
-    color: #d32f2f;
-    background-color: #fde8e8;
-    padding: 12px;
-    border-radius: 4px;
-    margin-top: 16px;
-    text-align: center;
-    border: 1px solid #f5c6cb;
-    animation: fadeIn 0.3s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }

@@ -1,6 +1,5 @@
 import { Router, RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { OrangeSquareButtonComponent } from "../../components/buttons/orange-square-button/orange-square-button.component";
 import { RegisterInputLayoutComponent } from "../../components/register-input-layout/register-input-layout.component";
 import { PasswordInputLayoutComponent } from "../../components/password-input-layout/password-input-layout.component";
@@ -9,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-singup',
-  imports: [RouterModule, FormsModule, OrangeSquareButtonComponent, RegisterInputLayoutComponent, PasswordInputLayoutComponent, LogoComponent],
+  imports: [RouterModule, OrangeSquareButtonComponent, RegisterInputLayoutComponent, PasswordInputLayoutComponent, LogoComponent],
   templateUrl: './singup.component.html',
   styleUrl: './singup.component.css'
 })
