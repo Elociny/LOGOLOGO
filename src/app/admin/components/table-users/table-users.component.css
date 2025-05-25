@@ -56,3 +56,14 @@ tbody tr th i:hover {
 app-confirm-action p span {
     font-weight: bolder;
 }
+
+.msg-nenhum-usuario {
+  text-align: center;
+  color: #b30000;
+  background-color: #ffe5e5;
+  padding: 1rem 2rem;
+}
+
+.msg-nenhum-usuario span {
+    font-weight: bold;
+}

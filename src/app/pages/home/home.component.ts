@@ -1,5 +1,5 @@
 import { Router, RouterModule } from '@angular/router';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { ListProductsComponent } from "../../components/list-products/list-products.component";
 import { FooterComponent } from "../../components/footer/footer.component";
@@ -16,7 +16,8 @@ import { ProdutoService } from '../../core/services/produto.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+
+export class HomeComponent implements OnInit {
   @Input() listaProdutos: Produto[] = [];
 
   produtoSelecionado: Produto = {

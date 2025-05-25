@@ -1,8 +1,14 @@
 <main class="users">
   <div class="header">
     <div class="input">
-      <input type="text" name="pesquisarUsuario" id="pesquisarUsuario" [(ngModel)]="textoBuscaUsuarios"
-        (input)="filtrarUsuarios()" placeholder="Digite o nome de um usuário..." />
+      <input
+        type="text"
+        name="pesquisarUsuario"
+        id="pesquisarUsuario"
+        [(ngModel)]="textoBuscaUsuarios"
+        (input)="filtrarUsuarios()"
+        placeholder="Digite o nome de um usuário..."
+      />
       <button class="bi bi-search" (click)="filtrarUsuarios()"></button>
     </div>
 
@@ -29,12 +35,20 @@
     </div>
   </div>
 
-  <app-table-users [listaAdmins]="listaAdmins"></app-table-users>
+  <app-table-users
+    [listaAdmins]="listaAdminsFiltrada" [textoBuscaUsuarios]="textoBuscaUsuarios"></app-table-users>
 </main>
 
-<app-info-users fundo="fundo-escuro" titulo="Cadastrar Usuário" [isOpen]="modalCadastrarUsuarioAberto"
-  (closed)="fecharModalCadastrarUsuario()" [(valorInputNome)]="admin.nome" [(valorInputSobrenome)]="admin.sobrenome"
-  [(valorInputEmail)]="admin.email" [(valorInputSenha)]="admin.senha">
+<app-info-users
+  fundo="fundo-escuro"
+  titulo="Cadastrar Usuário"
+  [isOpen]="modalCadastrarUsuarioAberto"
+  (closed)="fecharModalCadastrarUsuario()"
+  [(valorInputNome)]="admin.nome"
+  [(valorInputSobrenome)]="admin.sobrenome"
+  [(valorInputEmail)]="admin.email"
+  [(valorInputSenha)]="admin.senha"
+>
   <div class="espaco">
     <app-button-action (click)="fecharModalCadastrarUsuario()" cor="lilas">
       Fechar
@@ -46,24 +60,35 @@
   </div>
 </app-info-users>
 
-<app-confirm-action fundo="fundo-escuro" [isOpen]="modalConfirmarCadastroUsuarioAberto"
-  (closed)="fecharModalConfirmarCadastroUsuario()" title="Usuário cadastrado">
+<app-confirm-action
+  fundo="fundo-escuro"
+  [isOpen]="modalConfirmarCadastroUsuarioAberto"
+  (closed)="fecharModalConfirmarCadastroUsuario()"
+  title="Usuário cadastrado"
+>
   <p>
     Usuário <span>{{ admin.nome + " " + admin.sobrenome }}</span> cadastrado com
     sucesso!
   </p>
 
   <div class="espaco">
-    <app-button-action cor="lilas" (click)="
+    <app-button-action
+      cor="lilas"
+      (click)="
         fecharModalConfirmarCadastroUsuario(); fecharModalCadastrarUsuario()
-      ">
+      "
+    >
       Fechar
     </app-button-action>
   </div>
 </app-confirm-action>
 
-<app-confirm-action fundo="fundo-escuro" [isOpen]="modalErroUsuarioAberto" (closed)="fecharModalErroUsuario()"
-  title="Erro ao alterar">
+<app-confirm-action
+  fundo="fundo-escuro"
+  [isOpen]="modalErroUsuarioAberto"
+  (closed)="fecharModalErroUsuario()"
+  title="Erro ao alterar"
+>
   <p>Preencha todos os campos antes de cadastrar um usuário.</p>
 
   <div class="espaco">

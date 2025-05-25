@@ -1,6 +1,5 @@
 .product-box {
     padding: 1rem;
-
     transition: .5s;
 }
 
@@ -14,7 +13,6 @@
 
 .product-box img {
     border-radius: .5rem;
-
     height: 45vh;
 }
 
@@ -23,6 +21,7 @@
 }
 
 .avaliacao {
+    margin-top: 30px;
     display: flex;
     gap: .5rem;
     align-items: baseline;
@@ -39,3 +38,24 @@
     font-size: 1.2rem;
     
 }
+
+.nome-produto {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    max-width: 220px; /* aumenta a largura */
+    width: 100%;
+
+    font-size: 1rem; /* aumenta a fonte */
+    font-weight: 600; /* dá mais destaque */
+
+    line-height: 1.4rem;
+    text-align: center;
+
+    margin: 0.5rem auto 0;
+    color: var(--preto); /* ou a cor que combine com o tema */
+}
+

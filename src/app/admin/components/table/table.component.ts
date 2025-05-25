@@ -1,11 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import { ConfirmActionComponent } from "../modals/confirm-action/confirm-action.component";
 import { InfoProductComponent } from "../modals/info-product/info-product.component";
 import { ButtonActionComponent } from "../button-action/button-action.component";
-
 import { Produto } from '../../../core/types/produto.types';
 import { ProdutoService } from '../../../core/services/produto.service';
 

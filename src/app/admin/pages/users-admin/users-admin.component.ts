@@ -6,8 +6,8 @@ import { TableUsersComponent } from '../../components/table-users/table-users.co
 import { InfoUsersComponent } from '../../components/modals/info-users/info-users.component';
 import { ButtonActionComponent } from '../../components/button-action/button-action.component';
 import { ConfirmActionComponent } from '../../components/modals/confirm-action/confirm-action.component';
-import { AdminLayoutComponent } from '../../components/admin-layout/admin-layout.component';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-users-admin',
@@ -25,20 +25,23 @@ import { FormsModule } from '@angular/forms';
 })
 export class UsersAdminComponent implements OnInit {
   textoBuscaUsuarios: string = '';
-  listaAdmins: Admin[] = [];
-
   modalCadastrarUsuarioAberto = false;
   modalConfirmarCadastroUsuarioAberto = false;
   modalErroUsuarioAberto = false;
-
   admin: Admin = {} as Admin;
   adminId?: number;
+  listaAdminsOriginal: Admin[] = [];
+  listaAdminsFiltrada: Admin[] = [];
+
+   usuarioLogado: { nome: string; email: string } | null = null;
 
   constructor(
     private service: AdminService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
+  ) {}
+
+ ngOnInit(): void {
     this.adminId = Number(this.route.snapshot.params['id']);
     if (this.adminId) {
       this.service.buscarPorId(this.adminId).subscribe((admin) => {
@@ -47,39 +50,34 @@ export class UsersAdminComponent implements OnInit {
         }
       });
     }
-  }
-  usuarioLogado: { nome: string; email: string } | null = null
 
-  ngOnInit(): void {
-    this.carregarUsuarios()
-    
-    const usuarioStr = localStorage.getItem("usuarioLogado")
+    this.carregarUsuarios();
 
-    if(usuarioStr) {
-      const usuario = JSON.parse(usuarioStr)
+    const usuarioStr = localStorage.getItem("usuarioLogado");
+    if (usuarioStr) {
+      const usuario = JSON.parse(usuarioStr);
       this.usuarioLogado = {
         nome: usuario.nome || usuario.nomeCompleto || "Usuário",
-        email: usuario.email || 'email@exemplo.com'
-      }
+        email: usuario.email || "email@exemplo.com",
+      };
     }
   }
 
   carregarUsuarios() {
     this.service.listar().subscribe((admins) => {
-      this.listaAdmins = admins;
+      this.listaAdminsOriginal = admins;
+      this.listaAdminsFiltrada = admins;
     });
   }
 
-  filtrarUsuarios() {
+   filtrarUsuarios() {
     const termo = this.textoBuscaUsuarios.toLowerCase().trim();
-
     if (!termo) {
-      this.carregarUsuarios(); 
+      this.listaAdminsFiltrada = [...this.listaAdminsOriginal];
       return;
     }
-
-    this.listaAdmins = this.listaAdmins.filter((admin) =>
-      admin.nome.toLowerCase().includes(termo)
+    this.listaAdminsFiltrada = this.listaAdminsOriginal.filter((u) =>
+      u.nome.toLowerCase().includes(termo)
     );
   }
 
@@ -117,7 +115,12 @@ export class UsersAdminComponent implements OnInit {
   submeter() {
     const { nome, sobrenome, email, senha } = this.admin;
 
-    if (!nome?.trim() || !sobrenome?.trim() || !email?.trim() || !senha?.trim()) {
+    if (
+      !nome?.trim().length ||
+      !sobrenome?.trim().length ||
+      !email?.trim().length ||
+      !senha?.trim().length
+    ) {
       this.abrirModalErroCadastro();
       return;
     }

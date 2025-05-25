@@ -24,12 +24,9 @@ export class HomeAdminComponent implements OnInit {
   modalCadastrarProduto = false;
   modalConfirmarCadastro = false;
   modalErroCadastro = false;
-
   listaCompleta: Produto[] = [];  
   listaProdutos: Produto[] = [];   
-
   textoBusca: string = "";        
-
   produtoId?: number;
   produto: Produto = {} as Produto;
 
