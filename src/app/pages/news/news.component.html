@@ -5,7 +5,8 @@
 
     <section class="novidades">
         @for (produto of listaProdutos; track produto) {
-        <app-product-box routerLink="/em-contrucao" caminhoImagem="{{ produto.imagem }}" alt="imagem do produto {{ produto.nome }}"
+        <app-product-box routerLink="/em-contrucao" caminhoImagem="{{ produto.imagem }}"
+            alt="imagem do produto {{ produto.nome }}" nome=" {{ produto.nome }}"
             preco="{{ produto.preco }}"></app-product-box>
         }
     </section>

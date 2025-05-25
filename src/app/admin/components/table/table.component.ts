@@ -142,7 +142,7 @@ export class TableComponent implements OnInit {
 
     if (this.produtoSelecionado && this.produtoSelecionado.id) {
       this.service.editar(this.produtoSelecionado).subscribe(() => {
-        this.fecharAlterarProduto();
+        this.abrirConfirmarAlteracaoProduto()
 
         this.service.listar().subscribe(produtos => {
           this.listaProdutos = produtos;

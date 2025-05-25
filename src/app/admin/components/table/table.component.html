@@ -37,7 +37,7 @@
 
         <app-confirm-action [isOpen]="modalExclusaoAberto" (closed)="fecharModalExclusao()" fundo="fundo-escuro"
             title="Excluir produto">
-            <p>Tem certeza que deseja excluir este produto?</p>
+            <p>Tem certeza que deseja excluir o produto <span>{{ produtoSelecionado.nome }}</span>?</p>
 
             <div class="espaco">
                 <app-button-action cor="lilas" (click)="fecharModalExclusao()">
@@ -67,11 +67,11 @@
 
 <app-confirm-action fundo="fundo-escuro" [isOpen]="modalConfirmarAlteracaoAberto"
     (closed)="fecharConfirmarAlteracaoProduto()" title="Produto alterado">
-    <p>Produto alterado com sucesso!</p>
+    <p>Produto <span>{{ produtoSelecionado.nome }}</span> alterado com sucesso!</p>
 
     <div class="espaco">
         <app-button-action cor="lilas"
-            (click)="fecharConfirmarAlteracaoProduto(); fecharAlterarProduto(); confirmarAlteracaoProduto()">
+            (click)="fecharConfirmarAlteracaoProduto(); fecharAlterarProduto()">
             fechar
         </app-button-action>
     </div>

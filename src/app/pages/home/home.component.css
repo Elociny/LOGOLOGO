@@ -5,12 +5,11 @@ main {
     gap: 1rem;
 }
 
-.row-btns {
+main .row-btns {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-between;
-    width:90%;
+    justify-content: space-around;
 }
 
 .novidades {

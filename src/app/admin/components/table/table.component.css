@@ -85,5 +85,7 @@ tbody tr th i:hover {
     font-weight: bold;
 }
 
-
+app-confirm-action p span {
+    font-weight: bold;
+}
 
