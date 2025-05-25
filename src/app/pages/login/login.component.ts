@@ -8,6 +8,8 @@ import { RegisterInputLayoutComponent } from "../../components/register-input-la
 import { PasswordInputLayoutComponent } from "../../components/password-input-layout/password-input-layout.component";
 import { OrangeSquareButtonComponent } from "../../components/buttons/orange-square-button/orange-square-button.component";
 import { LogoComponent } from "../../components/logo/logo.component";
+import { ConfirmActionComponent } from "../../admin/components/modals/confirm-action/confirm-action.component";
+import { ButtonActionComponent } from "../../admin/components/button-action/button-action.component";
 
 @Component({
   selector: 'app-login',
@@ -18,8 +20,10 @@ import { LogoComponent } from "../../components/logo/logo.component";
     RegisterInputLayoutComponent,
     PasswordInputLayoutComponent,
     OrangeSquareButtonComponent,
-    LogoComponent
-  ],
+    LogoComponent,
+    ConfirmActionComponent,
+    ButtonActionComponent
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -27,11 +31,30 @@ export class LoginComponent {
   email: string = '';
   senha: string = '';
 
+  modalErroLogin = false;
+  modalErroUsuarioIncorreto = false
+
+  abrirModalErroLogin() {
+    this.modalErroLogin = true
+  }
+
+  fecharModalErroLogin() {
+    this.modalErroLogin = false
+  }
+
+  abrirModalErroUsuarioIncorreto() {
+    this.modalErroUsuarioIncorreto = true
+  }
+
+  fecharModalErroUsuarioIncorreto() {
+    this.modalErroUsuarioIncorreto = false
+  }
+
   constructor(private authService: AuthService, private router: Router) { }
 
   fazerLogin() {
     if (!this.email || !this.senha) {
-      alert('Preencha os campos!');
+      this.abrirModalErroLogin()
       return;
     }
 
@@ -44,7 +67,7 @@ export class LoginComponent {
         }
       })
       .catch(() => {
-        alert('Usuário ou senha incorretos!');
+        this.abrirModalErroUsuarioIncorreto()
       });
   }
 }

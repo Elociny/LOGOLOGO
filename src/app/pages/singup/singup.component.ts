@@ -5,10 +5,12 @@ import { RegisterInputLayoutComponent } from "../../components/register-input-la
 import { PasswordInputLayoutComponent } from "../../components/password-input-layout/password-input-layout.component";
 import { LogoComponent } from "../../components/logo/logo.component";
 import { HttpClient } from '@angular/common/http';
+import { ConfirmActionComponent } from "../../admin/components/modals/confirm-action/confirm-action.component";
+import { ButtonActionComponent } from "../../admin/components/button-action/button-action.component";
 
 @Component({
   selector: 'app-singup',
-  imports: [RouterModule, OrangeSquareButtonComponent, RegisterInputLayoutComponent, PasswordInputLayoutComponent, LogoComponent],
+  imports: [RouterModule, OrangeSquareButtonComponent, RegisterInputLayoutComponent, PasswordInputLayoutComponent, LogoComponent, ConfirmActionComponent, ButtonActionComponent],
   templateUrl: './singup.component.html',
   styleUrl: './singup.component.css'
 })
@@ -18,16 +20,35 @@ export class SingupComponent {
   senha: string = '';
   confirmarSenha: string = '';
 
+  modalErroLogin = false;
+  modalErroSenha = false
+
+  abrirModalErroLogin() {
+    this.modalErroLogin = true
+  }
+
+  fecharModalErroLogin() {
+    this.modalErroLogin = false
+  }
+
+  abrirModalErroSenha() {
+    this.modalErroSenha = true
+  }
+
+  fecharModalSenha() {
+    this.modalErroSenha = false
+  }
+
   constructor(private http: HttpClient, private router: Router) { }
 
   cadastrar() {
     if (!this.nome || !this.email || !this.senha || !this.confirmarSenha) {
-      alert('Preencha todos os campos');
+      this.abrirModalErroLogin()
       return;
     }
 
     if (this.senha !== this.confirmarSenha) {
-      alert('As senhas não coincidem');
+      this.abrirModalErroSenha()
       return;
     }
 

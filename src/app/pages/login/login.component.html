@@ -40,3 +40,25 @@
         </div>
     </div>
 </main>
+
+<app-confirm-action fundo="fundo-escuro" [isOpen]="modalErroLogin" (closed)="fecharModalErroLogin()"
+  title="Erro ao Logar">
+  <p>Preencha todos os campos.</p>
+
+  <div class="espaco">
+    <app-button-action cor="vermelho" (click)="fecharModalErroLogin()">
+      Fechar
+    </app-button-action>
+  </div>
+</app-confirm-action>
+
+<app-confirm-action fundo="fundo-escuro" [isOpen]="modalErroUsuarioIncorreto" (closed)="fecharModalErroUsuarioIncorreto()"
+  title="Erro ao Logar">
+  <p>Usuário ou senha incorretos!</p>
+
+  <div class="espaco">
+    <app-button-action cor="vermelho" (click)="fecharModalErroUsuarioIncorreto()">
+      Fechar
+    </app-button-action>
+  </div>
+</app-confirm-action>
