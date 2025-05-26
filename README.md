@@ -182,6 +182,9 @@ Esses comandos:
 
 ![Home Admin](docs/telas/admin/home.png)
 
+![LOGOLOGO](https://github.com/user-attachments/assets/ee8c6500-1135-42d4-87b4-c426e797a404)
+
+
 ---
 
 ## 📄 Licença
