@@ -1,59 +1,189 @@
-# LOGOLOGO
+# ![LOGOLOGO](docs/telas/LOGOLOGO.svg) LOGOLOGO 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+## 🏣️ O que é a LOGOLOGO
 
-## Development server
+A **LOGOLOGO** é uma aplicação web de e-commerce desenvolvida para simular a operação de uma loja virtual especializada na venda de roupas e calçados, com funcionalidades de controle de estoque voltadas para pequenos e médios negócios. O projeto oferece uma experiência moderna e intuitiva tanto para usuários finais quanto para administradores do sistema.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## ✅ Funcionalidades
+
+- Cadastro e autenticação de usuários (clientes e administradores)
+- Login com validação e redirecionamento conforme o tipo de usuário
+- Dashboard administrativo com visão geral do sistema
+- Sistema de controle de estoque com entradas e saídas de produtos
+- Edição de perfil do usuário
+- Busca de produtos com filtro dinâmico
+- Validação para evitar cadastro de usuários com e-mails duplicados
+
+O backend foi simulado por meio do **JSON Server**, permitindo a criação de uma API REST fictícia com base em um arquivo `db.json`. Essa API oferece suporte completo a operações CRUD (criar, listar, editar e excluir), essencial para testar a lógica do frontend sem depender de uma base de dados real.
+
+---
+
+## 🧪 Tecnologias Utilizadas
+
+- Angular CLI 19.2.4
+- TypeScript
+- HTML e CSS
+- JSON Server
+- Bootstrap Icons
+
+---
+
+## 📂 Estrutura do Projeto
+
+```plaintext
+├── backend/
+│   ├── db.json
+├── src/
+│   ├── app/
+│   │   ├── admin/
+│   │   │   ├── components/
+│   │   │   ├── pages/
+│   │   │   ├── admin.component.css
+│   │   │   ├── admin.component.html
+│   │   │   ├── admin.component.spec.ts
+│   │   │   └── admin.component.ts
+│   │   ├── components/
+│   │   ├── core/
+│   │   ├── guards/
+│   │   ├── pages/
+│   │   ├── app.component.css
+│   │   ├── app.component.html
+│   │   ├── app.component.spec.ts
+│   │   ├── app.component.ts
+│   │   └── app.routes.ts
+│   ├── assets/
+│   │   └── images/
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.css
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Toda a lógica relacionada à criação, edição e exclusão de produtos está localizada na pasta `admin/`.
+- As rotas estão definidas em `src/app/app.routes.ts` e são protegidas para que apenas usuários administradores possam acessá-las.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ⚙️ Funcionamento do Backend
+
+O backend da aplicação **LOGOLOGO** é simulado com o uso do [JSON Server](https://github.com/typicode/json-server), uma ferramenta leve que permite criar uma API REST fake a partir de um simples arquivo `.json`.
+
+### 🧩 Estrutura do Banco de Dados (`db.json`)
+
+O arquivo `db.json` representa o banco de dados da aplicação e está organizado em três coleções principais:
+
+#### 🔹 Produtos (`/produtos`)
+Cada produto contém os seguintes campos:
+
+- `id`: identificador único
+- `imagem`: URL da imagem
+- `nome`: nome do produto
+- `descricao`: descrição detalhada
+- `quantidade`: estoque disponível
+- `tamanho`: tamanho do item
+- `preco`: preço unitário
+
+#### 🔹 Administradores (`/admin`)
+Representa os usuários com acesso à área administrativa da plataforma:
+
+- `id`: identificador único
+- `nome` e `sobrenome`: nome completo do administrador
+- `email`: credencial de acesso
+- `senha`: senha de acesso
+
+#### 🔹 Clientes (`/clients`)
+Contém os dados dos clientes cadastrados:
+
+- `id`: identificador único
+- `nome`: nome do cliente
+- `email`: credencial de acesso
+- `senha`: senha de acesso
+
+---
+
+### 🔁 Operações Suportadas (CRUD)
+
+Com o `json-server` em execução, a aplicação suporta todas as operações básicas de uma API RESTFULL:
+
+| Método | Rota             | Descrição                            |
+|--------|------------------|----------------------------------------|
+| GET    | `/produtos`      | Lista todos os produtos                |
+| GET    | `/produtos/:id`  | Retorna um produto específico          |
+| POST   | `/produtos`      | Adiciona um novo produto               |
+| PUT    | `/produtos/:id`  | Atualiza um produto existente          |
+| DELETE | `/produtos/:id`  | Remove um produto                      |
+
+Essas rotas também são válidas para as entidades `/admin` e `/clients`.
+
+---
+
+## ⚙️ Pré-requisitos
+
+- Ter o [Node.js](https://nodejs.org/en/download) instalado
+  - Verifique a instalação via terminal:
+    ```bash
+    node -v      # Saída esperada: v22.14.0
+    npm -v       # Saída esperada: 11.2.0
+    ```
+- Ter o Angular CLI instalado:
+  ```bash
+  npm install -g @angular/cli
+  ng version
+  ```
+  Saída esperada:
+  ```bash
+  Angular CLI: 19.2.4
+  Node: 22.14.0
+  Package Manager: npm 11.2.0
+  ```
+
+---
+
+## ⬇️ Clonando o Repositório
 
 ```bash
-ng generate component component-name
+git clone https://github.com/Elociny/LOGOLOGO.git
+cd LOGOLOGO
+npm install
+npm run dev
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Esses comandos:
+- Iniciam o Angular na porta [http://localhost:4200](http://localhost:4200)
+- Iniciam o JSON Server na porta [http://localhost:3000](http://localhost:3000)
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## 🚀 Inicializando a Aplicação
 
-To build the project run:
+- Abra o navegador e acesse `http://localhost:4200` para ver a aplicação rodando.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### 👤 Tipos de Usuário
 
-## Running unit tests
+- **Cliente**: possui acesso limitado ao seu próprio perfil.
+  - Com o site aberto, você pode visualizar os produtos na página inicial, se cadastrar como cliente e navegar pelas seções.
+- **Administrador**: possui acesso total ao painel de administração.
+  - Para testar a área administrativa, acesse com as credenciais:
+    - **Email**: `admin@logologo.com`
+    - **Senha**: `1234`
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+### 📸 Imagens
 
-## Running end-to-end tests
+#### Página Inicial (Cliente)
 
-For end-to-end (e2e) testing, run:
+![Home Cliente](docs/telas/client/home.jpeg)
 
-```bash
-ng e2e
-```
+#### Dashboard Administrativo
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+![Home Admin](docs/telas/admin/home.png)
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📄 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
